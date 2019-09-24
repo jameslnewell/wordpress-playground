@@ -1,6 +1,6 @@
 # wordpress-playground
 
-An personal playground for all-things WordPress related.
+A personal playground for all-things WordPress related.
 
 ## Installation
 
