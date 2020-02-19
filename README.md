@@ -18,7 +18,7 @@ yarn
 
 2. Wait a couple of minutes for the server to start
 
-3. Browse to `http://localhost:1234/`
+3. Browse to `http://localhost:8888/`
 
     Username: `admin`
     

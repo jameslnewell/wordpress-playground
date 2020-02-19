@@ -1,30 +1,32 @@
-version: '3'
+version: '3.3'
 
 services:
-
-  database:
-    image: mysql:5
+  mysql:
+    image: mysql:5.7
     volumes:
-      - ./data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
 
   wordpress:
     depends_on:
-      - database
-    image: wordpress:5-apache
+      - mysql
+    image: wordpress:latest
+    # volumes:
+      # - ./plugins/<plugin-name>/:/var/www/html/wp-content/plugins/<plugin-name>
     ports:
-      - "1234:80"
+      - '8888:80'
     restart: always
     environment:
-      WORDPRESS_DB_HOST: database:3306
+      WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-    working_dir: /var/www/html
-    volumes:
-      - ./wp-content:/var/www/html/wp-content
-      - ./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      WORDPRESS_DB_NAME: wordpress
+      WP_MEDIA_CENTER_ENVIRONMENT: development
+
+volumes:
+  mysql_data: {}
