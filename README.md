@@ -22,3 +22,5 @@ yarn
 
 Username: `admin`
 Password: `admin`
+
+4. Run `yarn stop` to stop the server
