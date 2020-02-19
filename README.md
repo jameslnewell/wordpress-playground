@@ -8,6 +8,10 @@ A personal playground for all-things WordPress related.
 > - docker
 > - nodejs
 
+```bash
+yarn
+```
+
 ## Development
 
 1. Run `yarn start`
